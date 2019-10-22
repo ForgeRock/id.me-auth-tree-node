@@ -22,7 +22,7 @@ Service Provider wizard. Afterwards, you will update the Service Provider config
 * `Realms` > `Dashboard` > `Configure SAML v2 Provider` > `Create Hosted Service Provider`
 * `Name`: Provide your own unique identifier or leave the default suggested name ( IDme-SP )
 * `Circle of Trust`: Select Add to new option and provide a unique name to create a new Circle of Trust
-* `Attribute Mapping`: Leave Use default attribute mapping from Identity Provider checked for now
+* `Attribute Mapping`: Leave `Use default attribute mapping from Identity Provider` checked for now
 * Click the `Configure` button
 * In the follow up dialog asking to create the remote identity provider, select `No`
 
@@ -37,13 +37,13 @@ Service Provider wizard. Afterwards, you will update the Service Provider config
   * 2FA: http://idmanagement.gov/ns/assurance/2fa
   * LOA1: http://idmanagement.gov/ns/assurance/loa/1
   * LOA3: http://idmanagement.gov/ns/assurance/loa/3
-* Assertions Processing > Attributes Mapping
+* `Assertions Processing` > `Attributes Mapping`
   * Add the following `New Values`
     * `uuid=uid`
     * `email=mail`
     * `lname=sn`
     * `fname=givenName`
-* Services > `Assertion Consumer Service`
+* `Services` > `Assertion Consumer Service`
   * Check `HTTP-Artifact`
 * Click `Save`
 
@@ -52,7 +52,7 @@ Service Provider wizard. Afterwards, you will update the Service Provider config
 In this section you will add ID.me as a Remote Identity Provider and add it to newly created CoT.
 
 * `Realms` > `Dashboard` > `Configure SAMLv2 Provider` > `Configure Remote Identity Provider`
-* `URL where metadara is located`: Copy and paste url below
+* `URL where metadata is located`: Copy and paste url below
   * __Note: It is recommended to download ID.me's metadata, remove the Signature Section and manually upload.__
     * `Production`: https://api.id.me/saml/metadata/provider
     * `Sandbox`: https://api.idmelabs.com/saml/metadata/provider
@@ -65,8 +65,8 @@ __Note: First, download ForgeRock Admin Tools. [Click here to download](https://
 
 * Run `./setup` and configure the tool to point to AM
 * Echo your admin password to a local file by running `"echo “{{ADMIN_PASSWORD}}" > password.txt”`
-* Export your existing meta data for the SP created by running: `./ssoadm export-entity -u amadmin -f password.txt -e /{{REALM}} -y {{SAML_SP_ENTITY_ID}} -c saml2 -m metadata.xml -x extendedXML.xml`
-* Edit the `extendedXML.xml` file and included the following attribute:
+* Export your existing metadata for the SP created by running: `./ssoadm export-entity -u amadmin -f password.txt -e /{{REALM}} -y {{SAML_SP_ENTITY_ID}} -c saml2 -m metadata.xml -x extendedXML.xml`
+* Edit the `extendedXML.xml` file and include the following attribute:
   ```
   <Attribute name="spAuthncontextClassrefMapping">
       <Value>http://idmanagement.gov/ns/assurance/2fa|0|default</Value>
@@ -75,7 +75,7 @@ __Note: First, download ForgeRock Admin Tools. [Click here to download](https://
   </Attribute>
   ```
 * Delete the existing SP they have in AM by running: `./ssoadm delete-entity -u amadmin -f password.txt -e /{{REALM}} -y {{SAML_SP_ENTITY_ID}}  -c saml2`
-* Re-import the metadata with the updated extended metadata by running: `./ssoadm import-entity -u amadmin -f password.txt -e / -t {{CIRLCE_OF_TRUST}} -c saml2 -m metadata.xml -x extendedXML.xml`
+* Re-import the updated, extended metadata by running: `./ssoadm import-entity -u amadmin -f password.txt -e / -t {{CIRLCE_OF_TRUST}} -c saml2 -m metadata.xml -x extendedXML.xml`
 
 
 ### ID.me Authentication Tree
@@ -105,7 +105,7 @@ You should now be able to hit the instance at `http://[DNS_ALIAS]:8080/[REALM_AL
 
 Example link to run through ID.me flow: `http://openam.partner.com:8080/openam/XUI/#login&service=idme`
 
-[Click here to see mock up the user experience](https://invis.io/5AUHL6DT3PG)
+[Click here to see a mockup of the user experience](https://invis.io/5AUHL6DT3PG)
 
 ## What's Next?
 
