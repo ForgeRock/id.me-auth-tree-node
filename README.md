@@ -10,7 +10,7 @@ credentials.
 ### Prerequisites
 
 You are familiar with ForgeRock Federation concepts.
-Install our SAML2 Node which can be found [here](https://backstage.forgerock.com/marketplace/api/catalog/entries/AWt2Ry-ktOjgaXWNPSxp).
+Install the SAML2 Node which can be found [here](https://backstage.forgerock.com/marketplace/api/catalog/entries/AWt2Ry-ktOjgaXWNPSxp).
 
 ### Hosted SP
 
@@ -84,7 +84,7 @@ In this section you will create a new SAML2 authentication node and an authentic
 
 #### Configure ID.me Authentication Tree
 
-__Note: Download extension to get access to SAML2 Node [Click here for instructions](https://meet.google.com/linkredirect?authuser=0&dest=https%3A%2F%2Fbackstage.forgerock.com%2Fmarketplace%2Fapi%2Fcatalog%2Fentries%2FAWt2Ry-ktOjgaXWNPSxp)__
+__Note: Download extension to get access to SAML2 Node [Click here for instructions](https://backstage.forgerock.com/marketplace/api/catalog/entries/AWt2Ry-ktOjgaXWNPSxp)__
 
 * `Realms` > `Authentication` > `Trees` > `Create Tree`
 * `Name`: Provide your own unique identifier or leave the default suggested name ( IDme Tree )
@@ -97,7 +97,7 @@ __Note: Download extension to get access to SAML2 Node [Click here for instructi
     *  `No account exists`: Points to `Provision Dynamic Account`
 * Click `Save`
 
-![Authentication Tree](forgerock_auth_tree.png "Authentication Tree")
+![Authentication Tree](https://github.com/ForgeRock/id.me-auth-tree-node/blob/master/forgerock_auth_tree.png?raw=true "Authentication Tree")
 
 ## Test ID.me Configuration
 
